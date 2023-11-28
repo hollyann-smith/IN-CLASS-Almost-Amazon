@@ -1,7 +1,7 @@
 import { signOut } from '../utils/auth';
 import { getBooks, booksOnSale } from '../api/bookData';
 import { showBooks } from '../pages/books';
-import { getAuthors, getAuthorBooks } from '../api/authorData';
+import { getAuthors, getFavoriteAuthor } from '../api/authorData';
 import { showAuthors } from '../pages/authors';
 
 // navigation events
@@ -33,7 +33,7 @@ const navigationEvents = () => {
 
   // FAVORITE AUTHORS
   document.querySelector('#favorite-authors').addEventListener('click', () => {
-    getAuthorBooks().then(showAuthors);
+    getFavoriteAuthor().then(showAuthors);
     console.warn('CLICKED FAVORITE AUTHOR');
   });
 
