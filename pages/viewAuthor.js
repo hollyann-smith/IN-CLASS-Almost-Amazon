@@ -6,16 +6,16 @@ const viewAuthor = (obj = {}) => {
   clearDom();
 
   const domString = `
-  <h2> ${obj.first_name} ${obj.last_name} ${obj.favorite ? '<span class="badge badge-warning sale-badge"><i class="fa fa-heart" aria-hidden="true"></i></badge></h2>' : ''}
+  <h3> ${obj.first_name} ${obj.last_name} ${obj.favorite ? '<span class="badge badge-warning sale-badge"><i class="fa fa-heart" aria-hidden="true"></i></badge></h2>' : ''}
   <p>author email: ${obj.email}</p>
-  <button type="button" class="btn btn-info" id="update-author--${obj.firebaseKey}"><i class="fas fa-edit btn btn-info" aria-hidden="true"></i></button>
-  <button type="button" class="btn btn-danger" id="delete-author-btn--${obj.firebaseKey}"><i class="btn btn-danger fas fa-trash-alt" aria-hidden="true"></i></button>
+  <button type="button" class="btn btn-info" id="update-author--${obj.firebaseKey}"><i class="fa fa-edit btn btn-info" aria-hidden="true"></i></button>
+  <button type="button" class="btn btn-danger" id="delete-author-btn--${obj.firebaseKey}"><i class="btn btn-danger fa fa-trash-alt" aria-hidden="true"></i></button>
   <br/>
   <br/>
-  <h2>Books</h2>
+  <h3>Books</h3>
 `;
 
-  renderToDOM('#view', domString);
+  renderToDOM('#form-container', domString);
 
   let authorCard = '';
   obj.booksArray.forEach((item) => {
@@ -26,12 +26,13 @@ const viewAuthor = (obj = {}) => {
       <h5 class="card-title">${item.title}</h5>
         <p class="card-text bold">${item.sale ? `<span class="badge badge-info sale-badge"><i class="fa fa-bell" aria-hidden="true"></i> Sale</span> $${item.price}` : `$${item.price}`}</p>
         <hr>
-        <i class="btn btn-success fas fa-eye" id="view-book-btn--${item.firebaseKey}"></i>
+        <i class="btn btn-success fa fa-eye" id="view-book-btn--${item.firebaseKey}"></i>
         <i id="edit-book-btn--${item.firebaseKey}" class="fas fa-edit btn btn-info"></i>
-        <i id="delete-book-btn--${item.firebaseKey}" class="btn btn-danger fas fa-trash-alt"></i>
+        <i id="delete-book-btn--${item.firebaseKey}" class="btn btn-danger fa fa-trash-alt"></i>
     </div>
   </div>`;
   });
+  console.warn(obj.booksArray);
   renderToDOM('#store', authorCard);
 };
 
